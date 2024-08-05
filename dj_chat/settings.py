@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django_htmx',
     "ch_home",
     "ch_users",
+    "ch_kchat",
 ]
 
 MIDDLEWARE = [
