@@ -23,7 +23,7 @@ from ch_home.views import *
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', home_view, name="home"),
+    path('', include("ch_kchat.urls")),
     path("accounts/", include("allauth.urls")),
     path("profile/", include("ch_users.urls")),
     path("@<username>/", profile_view, name="profile"),
