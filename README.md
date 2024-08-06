@@ -1,32 +1,19 @@
-#### Video Tutorial of this project
-https://youtu.be/SQ4A7Q6_md8
-<br><br>
+# Django Chat App
 
-#### Getting the files
-Download zip file or <br>
-Clone with git + remove git folder
-```
-git clone https://github.com/andyjud/django-starter.git . && rm -rf .git
-```
-<br><br><br>
+A simple and efficient real-time chat application built with Django and WebSockets.
 
-## Setup
+## Features
+
+- User authentication (registration, login, logout)
+- Real-time messaging using WebSockets
+- Support for private and group chats
+- Message history
+- User profile management
+- Responsive design
 
 #### - Create Virtual Environment
-###### # Mac
-```
-python3 -m venv venv
-source venv/bin/activate
-```
 
-###### # Windows
-```
-pip install virtualenv 
-virtualenv venv 
-venv\Scripts\activate.bat 
-```
 
-<br>
 
 #### - Install dependencies
 ```
@@ -34,7 +21,6 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-<br>
 
 #### - Migrate to database
 ```
@@ -47,16 +33,6 @@ python manage.py createsuperuser
 #### - Run application
 ```
 python manage.py runserver
-```
-
-<br>
-
-#### - Generate Secret Key ( ! Important for deployment ! )
-```
-python manage.py shell
-from django.core.management.utils import get_random_secret_key
-print(get_random_secret_key())
-exit()
 ```
 
 
