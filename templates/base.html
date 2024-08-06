@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Title</title>
+    <title>Real Time Chat</title>
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <script src="https://unpkg.com/htmx.org@1.9.2/dist/htmx.min.js" defer></script>
-    <script src="https://unpkg.com/htmx.org@1.9.2/dist/ext/ws.js" defer></script>
-    <script src="https://unpkg.com/hyperscript.org@0.9.12" defer></script>
+    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
+    <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
+    {% comment %} <script src="https://unpkg.com/htmx.org/dist/ext/ws.js"></script> {% endcomment %}
+    <script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/ws.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style type="text/tailwindcss">
         [x-cloak] { 
@@ -48,7 +49,7 @@
             @apply !bg-gray-300 hover:!bg-[#c3c9d0]
         }
         .navitems>li>a {
-            @apply flex items-center gap-2 h-12 px-4 hover:bg-gray-700 rounded-lg;
+            @apply flex items-center gap-2 h-12 px-4 hover:bg-[rgba(31,41,55,0.3)] rounded-lg;
         }
         .hoverlist>* {
             @apply hover:bg-gray-100 rounded-md transition duration-150;
@@ -92,22 +93,31 @@
         input[name="remember"] {
             @apply w-auto
         }
-        .alert-info { @apply bg-blue-300 }
-        .alert-success { @apply bg-green-400 }
-        .alert-warning { @apply bg-amber-400 }
-        .alert-danger { @apply bg-amber-500 }
+        .alert-info { @apply bg-sky-600 }
+        .alert-success { @apply bg-emerald-600 }
+        .alert-warning { @apply bg-orange-600 }
+        .alert-danger { @apply bg-red-600 }
+        .green-dot{
+            @apply rounded-full bg-green-500 p-1.5
+        }
+        .gray-dot{
+            @apply rounded-full bg-gray-500 p-1.5
+        }
+        .graylight-dot{
+            @apply rounded-full bg-gray-300 p-1.5
+        }
     </style>
 </head>
 <body class="{% block class %}{% endblock %}">
 	
-    {% include "includes/messages.html" %}
+    {% include 'includes/messages.html' %}
 
-    {% include "includes/header.html" %}
+    {% include 'includes/header.html' %}
 
     {% block layout %}
-    
-    {% endblock layout %}
-    {% block javascript %}{% endblock javascript %}
+    {% endblock %}
+
+    {% block javascript %}{% endblock %}
 
 </body>
 </html>
