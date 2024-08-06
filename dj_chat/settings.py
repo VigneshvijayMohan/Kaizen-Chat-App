@@ -25,12 +25,15 @@ SECRET_KEY = "django-insecure-wu37&-#n@q!rt^c+wqf3%5occ5vg1ed^@&_m9#to&nhij4@3_3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']
+
+CSRF_TRUSTED_ORIGINS = [ 'https://*' ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    "daphne",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -46,6 +49,8 @@ INSTALLED_APPS = [
     "ch_users",
     "ch_kchat",
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -85,8 +90,15 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "dj_chat.wsgi.application"
+# WSGI_APPLICATION = "dj_chat.wsgi.application"
 
+ASGI_APPLICATION = "dj_chat.asgi.application"
+
+CHANNEL_LAYERS = {
+    'default': {
+        "BACKEND":"channels.layers.InMemoryChannelLayer",
+    }
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -147,8 +159,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 LOGIN_REDIRECT_URL = "/"
+ACCOUNT_SIGNUP_REDIRECT_URL = "{% url 'account_signup' %}?next={% url 'profile-onboarding' %}"
 
-
-EMAIL_BACKEND= "django.core.mail.backends.console.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
